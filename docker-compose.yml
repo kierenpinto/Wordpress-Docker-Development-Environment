@@ -14,10 +14,11 @@ services:
     volumes:
       - ./wordpress:/var/www/html
   wp-cli:
-    image: wordpress:cli
+    build: ./wp-theme-cli
     restart: 'no'
-    ports: 
-      - 8084:80
+    depends_on:
+      - db
+      - wordpress
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
