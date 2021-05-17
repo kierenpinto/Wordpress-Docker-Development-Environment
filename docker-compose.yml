@@ -14,7 +14,7 @@ services:
     volumes:
       - ./wordpress:/var/www/html
   wp-cli:
-    build: ./wp-theme-cli
+    build: ./wp-tools-cli
     restart: 'no'
     depends_on:
       - db
@@ -26,6 +26,8 @@ services:
       WORDPRESS_DB_NAME: exampledb
     volumes:
       - ./wordpress:/var/www/html
+    profiles:
+      - install
   db:
     image: mysql:5.7
     restart: 'no'
